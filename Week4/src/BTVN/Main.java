@@ -79,7 +79,7 @@ public class Main {
         Student studentB = new Student("Hoàng Anh Đức", 2006, "Tuyên Quang", 8, 9, 10, 0);
         Student studentC = new Student("Nguyễn Ngọc Hà", 2006, "Ninh Bình", 7.5, 8.5, 9.5, 4);
         Student studentD = new Student("Hà Đình Lâm", 2006, "Nghệ An", 10, 10, 10, 1);
-        Student studentE = new Student("Phan Huyển Trang", 2006, "TP.HCN", 6.5, 8.5, 9, 2);
+        Student studentE = new Student("Phan Huyển Trang", 2006, "TP.HCM", 6.5, 8.5, 9, 2);
 
         students.add(studentA);
         students.add(studentB);

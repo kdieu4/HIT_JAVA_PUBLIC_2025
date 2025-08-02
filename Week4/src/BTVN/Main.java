@@ -8,7 +8,142 @@ public class Main {
     static Scanner sc = new Scanner(System.in);
     static ArrayList<Student> students = new ArrayList<>();
 
+    public static void addStudent() {package BTVN;
+
+import java.util.*;
+
+public class Main {
+    static Scanner sc = new Scanner(System.in);
+    static List<Student> students = new ArrayList<>();
+
     public static void addStudent() {
+        System.out.println("Tên: ");
+        String name = sc.nextLine();
+        System.out.println("Năm sinh: ");
+        int yearOfBirth = sc.nextInt();
+        System.out.println("Địa chỉ: ");
+        String address = sc.nextLine();
+        sc.nextLine();
+        System.out.println("TX1: ");
+        double tx1 = sc.nextDouble();
+        System.out.println("TX2: ");
+        double tx2 = sc.nextDouble();
+        System.out.println("KTHP: ");
+        double kthp = sc.nextDouble();
+        System.out.println("Số tiết nghỉ: ");
+        int dayOff = sc.nextInt();
+        sc.nextLine();
+        students.add(new Student(name, yearOfBirth, address, tx1, tx2, kthp, dayOff));
+    }
+
+    public static void updateStudent() {
+        System.out.println("Nhập tên cần sửa: ");
+        String name = sc.nextLine();
+        for (Student s : students) {
+            if (s.getName().equalsIgnoreCase(name)) {
+                System.out.println("Tên mới: ");
+                s.setName(sc.nextLine());
+                System.out.println("Năm sinh mới: ");
+                s.setYearOfBirth(sc.nextInt());
+                System.out.println("Địa chỉ mới: ");
+                s.setAddress(sc.nextLine());
+                sc.nextLine();
+                System.out.println("TX1: ");
+                s.setTx1(sc.nextDouble());
+                System.out.println("TX2: ");
+                s.setTx2(sc.nextDouble());
+                System.out.println("KTHP: ");
+                s.setSemesterGrade(sc.nextDouble());
+                System.out.println("Số tiết nghỉ: ");
+                s.setOffPeriods(sc.nextInt());
+                return;
+            }
+        }
+        System.out.println("Không tìm thấy sinh viên!");
+    }
+
+    public static void display() {
+        System.out.println(Student.getHeader());
+        System.out.println("------------------------------------------------------------------------------------------------------");
+        for (Student student : students) {
+            System.out.println(student.displayAll());
+        }
+    }
+
+    public static void deleteStudent() {
+        System.out.println("Nhập tên sinh viên cần xóa: ");
+        String name = sc.nextLine();
+        boolean removed = students.removeIf(s -> s.getName().equalsIgnoreCase(name));
+        if (!removed) {
+            System.out.println("Không tìm thấy sinh viên!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Student studentA = new Student("Đặng Phương Anh", 2006, "Hà Nội", 8.5, 8.5, 9, 2);
+        Student studentB = new Student("Hoàng Anh Đức", 2006, "Tuyên Quang", 8, 9, 10, 0);
+        Student studentC = new Student("Nguyễn Ngọc Hà", 2006, "Ninh Bình", 7.5, 8.5, 9.5, 4);
+        Student studentD = new Student("Hà Đình Lâm", 2006, "Nghệ An", 10, 10, 10, 1);
+        Student studentE = new Student("Phan Huyển Trang", 2006, "TP.HCM", 6.5, 8.5, 9, 2);
+
+        students.add(studentA);
+        students.add(studentB);
+        students.add(studentC);
+        students.add(studentD);
+        students.add(studentE);
+
+        do {
+            String menu = ("\n---QUẢN LÝ SINH VIÊN---\n")
+                    + ("1. Thêm sinh viên\n")
+                    + ("2. Sửa thông tin sinh viên\n")
+                    + ("3. Sắp xếp sinh viên theo tuổi\n")
+                    + ("4. Sắp xếp sinh viên theo GPA\n")
+                    + ("5. Sắp xếp sinh viên theo số tiết nghỉ\n")
+                    + ("6. Xóa sinh viên\n")
+                    + ("7. Hiển thị danh sách sinh viên\n")
+                    + ("0. Thoát\n");
+
+            System.out.println(menu);
+
+            System.out.println("Chọn: ");
+            int choice = sc.nextInt();
+            sc.nextLine();
+
+            switch (choice) {
+                case 1:
+                    addStudent();
+                    break;
+                case 2:
+                    updateStudent();
+                    break;
+                case 3:
+                    students.sort(Comparator.comparing(Student::countAge));
+                    display();
+                    break;
+                case 4:
+                    students.sort(Comparator.comparing(Student::calculateGPA));
+                    display();
+                    break;
+                case 5:
+                    students.sort(Comparator.comparing(Student::getOffPeriods));
+                    display();
+                    break;
+                case 6:
+                    deleteStudent();
+                    break;
+                case 7:
+                    display();
+                    break;
+                case 0:
+                    System.exit(0);
+                    break;
+                default:
+                    System.out.println("Lựa chọn không hợp lệ!");
+                    break;
+            }
+        } while (true);
+    }
+}
         System.out.println("Tên: ");
         String name = sc.nextLine();
         System.out.println("Năm sinh: ");

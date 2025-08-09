@@ -3,6 +3,7 @@ package BTVN;
 import java.time.Year;
 
 public class Student {
+    final int id;
     private String name;
     private int yearOfBirth;
     private String address;
@@ -10,6 +11,15 @@ public class Student {
     private double tx2;
     private double semesterGrade;
     private int offPeriods;
+
+    static int genId = 0;
+
+    static private String format = "%-20s %-7s %-15s %-10s %-10s %-10s %-10s %-10s";
+
+    static public String getHeader() {
+        String[] headers = {"Tên", "Tuổi", "Địa chỉ", "Điểm TX1", "Điểm TX2", "Điểm KTHP", "Điểm GPA", "Số tiết nghỉ"};
+        return String.format(format, headers[0], headers[1], headers[2], headers[3], headers[4], headers[5], headers[6], headers[7]);
+    }
 
     public Student(String name, int yearOfBirth, String address, double tx1, double tx2, double semesterGrade, int offPeriods) {
         this.name = name;
@@ -19,6 +29,8 @@ public class Student {
         this.tx2 = tx2;
         this.semesterGrade = semesterGrade;
         this.offPeriods = offPeriods;
+
+        id = ++genId;
     }
 
     public String getName() {
@@ -85,4 +97,11 @@ public class Student {
     public void setOffPeriods(int offPeriods) {
         this.offPeriods = offPeriods;
     }
+<<<<<<< HEAD
+=======
+
+    String displayAll() {
+        return String.format(format, getName(), countAge(), getAddress(), getTx1(), getTx2(), getSemesterGrade(), calculateGPA(), getOffPeriods());
+    }
+>>>>>>> 59f82966c1368642c5c698a317535729dae35c42
 }
